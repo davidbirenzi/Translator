@@ -134,6 +134,18 @@ if (targetLanguageSelect) {
     targetLanguageSelect.addEventListener('change', validateLanguageSelection);
 }
 
+// Continue button functionality
+const continueBtn = document.getElementById('continueBtn');
+const translationFormContainer = document.getElementById('translationFormContainer');
+
+if (continueBtn && translationFormContainer) {
+    continueBtn.addEventListener('click', function() {
+        this.style.display = 'none';
+        translationFormContainer.style.display = 'block';
+        translationFormContainer.scrollIntoView({ behavior: 'smooth' });
+    });
+}
+
 // Form submission with loading state and validation
 const translationForm = document.querySelector('.translation-form');
 if (translationForm) {
@@ -148,9 +160,8 @@ if (translationForm) {
         const submitButton = this.querySelector('button[type="submit"]');
         if (submitButton) {
             const originalText = submitButton.innerHTML;
-            submitButton.innerHTML = '<i data-lucide="loader-2"></i> Translating...';
+            submitButton.innerHTML = '<div class="loading-spinner"></div> Translating...';
             submitButton.disabled = true;
-            lucide.createIcons();
             
             // Re-enable if form submission fails (shouldn't happen, but just in case)
             setTimeout(() => {

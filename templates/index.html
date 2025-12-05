@@ -46,8 +46,13 @@
                 High-accuracy AI translation with language validation for educational and professional documents.
             </p>
             
+            <button id="continueBtn" class="btn-hero-primary">
+                <i data-lucide="arrow-right"></i>
+                Continue with Translation
+            </button>
+            
             <!-- Translation Form -->
-            <div class="translation-form-container">
+            <div id="translationFormContainer" class="translation-form-container" style="display: none;">
                 {% with messages = get_flashed_messages(with_categories=true) %}
                     {% if messages %}
                         {% for category, message in messages %}
